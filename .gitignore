@@ -1,0 +1,6 @@
+.vs/
+conkers/bin/
+conkers/obj/
+*.csproj
+*.vbproj
+*.suo
