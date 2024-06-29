@@ -1,0 +1,27 @@
+name: Deploy Blazor WebAssembly to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]  # Change to your desired branch to trigger on push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Replace with desired runner OS
+
+    steps:
+      - uses: actions/checkout@v3  # Checkout code from repository
+
+      - uses: .NET Foundation/setup-dotnet@v2  # Setup .NET Core SDK
+        with:
+          dotnet-version: '= 8.0'  # Update with your required .NET version
+
+      - uses: actions/restore@v3  # Restore NuGet packages
+
+      - run: dotnet publish -c Release --no-build  # Publish Blazor app
+
+      - uses: JamesIves/github-pages-deploy-action@v4.3.1  # Deploy to GitHub Pages
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Access token with push permissions
+          branch: gh-pages  # Deploy to the gh-pages branch
+          folder: ./bin/Release/net8.0/browser-wasm/publish/  # Update with your publish folder path
+          single-branch: true  # Only deploy if pushed to the main branch
