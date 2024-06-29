@@ -1,6 +1,6 @@
 .vs/
 conkers/bin/
 conkers/obj/
-*.csproj
-*.vbproj
+*.csproj.user
+*.vbproj.user
 *.suo
