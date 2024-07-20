@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "conkers",
   "resources": {
-    "hash": "sha256-6O6PXfFEh8UcuvXb48dwQu0t/3WlchPzAEW32gTW6GI=",
+    "hash": "sha256-LicC8zF5aYAzY4d0l6INTbjR3njt83FdqFizI1sYCS0=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.et8kenbuot.js": "sha256-7mUf77X9kA8XQSanKrMFFP42Cd+qNdOCGHeI1c5JxXo="
     },
@@ -18,7 +18,7 @@
     },
     "assembly": {
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "conkers.wasm": "sha256-TtxFGTttfMqUIm8CP1Eiz9TF2IHxAQVSOA0FUE9OrBM=",
+      "conkers.wasm": "sha256-DIVvDQxNSKfNPEtlXiwe+q3BeQSmxjaV56Wa6XsQ5m8=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-otaHVV+wNUYShtezT2jeFxqJpzzpltizjuPLy6ZDFSA=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-8DCAXuBjOvKrmwQDFKJUjr30QOqAtV8KcoVMwXYW9Vw=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-VJ+Sq+qxiMKTb7kfwbzD3a+SmN9i7qDgzYFmT5xMFdI=",
