@@ -1,8 +1,48 @@
-﻿@page "/"
+﻿@using conkers.Models
+@using conkers.Components
+@using MudBlazor
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@page "/"
 @page "/conkers"
 
-<PageTitle>Home</PageTitle>
+<MudPaper Width="100%">
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        <MudPaper Width="100%">
+            <MudBlazor.MudGrid Spacing="500">
+                @if (tempPlayers == null)
+                {
+                    <MudBlazor.MudItem xs="12">
+                        <div>Loading...</div>
+                    </MudBlazor.MudItem>
+                }
+                else if (!tempPlayers.Any())
+                {
+                    <MudBlazor.MudItem xs="12">
+                        <div>No players available.</div>
+                    </MudBlazor.MudItem>
+                }
+                else
+                {
+                    @foreach (Player player in tempPlayers)
+                    {
+                        <MudBlazor.MudItem xs="12">
+                            <Scorecard Handle="@player.Handle" Wins="@player.Wins" Losses="@player.Losses" />
+                        </MudBlazor.MudItem>
+                    }
+                }
+            </MudBlazor.MudGrid>
+        </MudPaper>
+    </MudContainer>
+</MudPaper>
 
-<h1>Hello, world!</h1>
+@code {
+    public List<Player> tempPlayers = new List<Player>
+    {
+        new Player("Dan", 3, 2),
+        new Player("Daniel", 3, 4),
+        new Player("Danny", 3, 3),
+    };
 
-Welcome to your new app.
+    [Parameter]
+    public List<Player> Players { get; }
+}

@@ -1,0 +1,109 @@
+﻿@using conkers.Services
+@using MudBlazor
+@inject HttpClient Http
+@inject SvgService svgService
+
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Class="transparent-avatar" Style="background-color:unset">
+                <MudImage Src="@_imageSvg" />
+            </MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText>@Handle</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudButtonGroup>
+                <MudIconButton Icon="@Icons.Material.Rounded.Close"></MudIconButton>
+            </MudButtonGroup>
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudGrid>
+            <MudItem xs="3">
+                <MudText>@Wins</MudText>
+            </MudItem>
+            <MudItem xs="2">
+                <MudButtonGroup Size="@Size.Small" Vertical="true">
+                    <MudIconButton @onclick="@IncrementWins" Icon="@Icons.Material.Rounded.Add" />
+                    <MudIconButton @onclick="@DecrementWins" Icon="@Icons.Material.Rounded.Remove" />
+                </MudButtonGroup>
+            </MudItem>
+            <MudItem xs="3">
+                <MudText>@Losses</MudText>
+            </MudItem>
+            <MudItem xs="2">
+                <MudButtonGroup Size="@Size.Small" Vertical="true">
+                    <MudIconButton @onclick="@IncrementLosses" Icon="@Icons.Material.Rounded.Add" />
+                    <MudIconButton @onclick="@DecrementLosses" Icon="@Icons.Material.Rounded.Remove" />
+                </MudButtonGroup>
+            </MudItem>
+            <MudItem xs="2">
+                <MudText>@WinRate.ToString("F1")%</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter]
+    public string? Handle { get; set; }
+
+    [Parameter]
+    public int Wins { get; set; }
+
+    [Parameter]
+    public int Losses { get; set; }
+
+    private string? _imageSvg { get; set; }
+
+    public decimal WinRate
+    {
+        get
+        {
+            if (Losses == 0)
+            {
+                return Wins == 0 ? (decimal)0.0 : (decimal)100.0;
+            }
+
+            var totalMatches = Wins + Losses;
+            decimal winRate = (Wins / totalMatches) * 100;
+            return winRate;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(Handle))
+        {
+            _imageSvg = await svgService.GetSvgAsync($"https://api.dicebear.com/9.x/bottts/svg?seed={Handle}");
+        }
+    }
+
+    public void IncrementWins()
+    {
+        Wins += 1;
+    }
+
+    public void DecrementWins()
+    {
+        if (Wins > 0)
+        {
+            Wins -= 1;
+        }
+    }
+
+    public void IncrementLosses()
+    {
+        Losses += 1;
+    }
+
+    public void DecrementLosses()
+    {
+        if (Wins > 0)
+        {
+            Losses -= 1;
+        }
+    }
+}
