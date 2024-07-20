@@ -4,3 +4,4 @@ conkers/obj/
 *.csproj.user
 *.vbproj.user
 *.suo
+dist/
