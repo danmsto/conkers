@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "conkers",
   "resources": {
-    "hash": "sha256-mkIDBcL2r3rUcau7Z+/lGevJdTZLxiW8qtGTFE4qCBM=",
+    "hash": "sha256-8NFb6nbXLYG5jTM/TsczowTG3/hOywHexY587CbHfz8=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.m7qa7vz601.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -212,10 +212,10 @@
       "mscorlib.wasm": "sha256-fLbZiSHBNdpHoh4EgRqMaNP5NQyIK5TEj6AXFLqo8m8=",
       "netstandard.wasm": "sha256-d4xbAE8qrKq5euUoZHPO+jkYPjlCYBzUew45MKsYKic=",
       "System.Private.CoreLib.wasm": "sha256-8yi6NcX1lkNQgV4WKjnMBYIZyKh4P+OXnXVQmgxGZD4=",
-      "conkers.wasm": "sha256-s8hCPw3IapoPCmZzhALjvq5HJzas6zTHxLc0asIwydE="
+      "conkers.wasm": "sha256-hDVFaeMh/YxiQq2dxjVA2W9vFPrVgF2qwLl4gx8gn0c="
     },
     "pdb": {
-      "conkers.pdb": "sha256-MVQGSXVKovAMotHYI6ME/FV+8cXg9ZXlYgFO+yQB5tc="
+      "conkers.pdb": "sha256-hx2IAcbASuT54oHyasfjRYHXkCdFYmPW040p6kCg2xY="
     }
   },
   "cacheBootResources": true,
