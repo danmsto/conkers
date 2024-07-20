@@ -1,10 +1,10 @@
 ﻿@font-face {
-    font-family: Abel;
-    src: url(../Abel-Regular.ttf) format('truetype');
+    font-family: LeagueSpartan;
+    src: url(fonts/LeagueSpartan-VF.ttf) format('truetype')
 }
 
 html, body {
-    font-family: Abel, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: LeagueSpartan, sans-serif;
     font-size: large;
 }
 

@@ -1,18 +1,11 @@
 ﻿namespace conkers.Models
 {
-    public class Player
+    public class Player(string handle, int wins, int losses)
     {
-        public Player(string handle, int wins, int losses)
-        {
-            Handle = handle;
-            Wins = wins;
-            Losses = losses;
-        }
+        public string Handle { get; set; } = handle;
 
-        public string Handle { get; set; }
+        public int Wins { get; set; } = wins;
 
-        public int Wins { get; set; } = 0;
-
-        public int Losses { get; set; } = 0;
+        public int Losses { get; set; } = losses;
     }
 }

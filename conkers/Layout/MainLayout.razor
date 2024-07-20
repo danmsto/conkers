@@ -13,7 +13,7 @@
         </MudAppBar>
         <MudDrawer @bind-Open="_drawerOpen" Variant="@DrawerVariant.Persistent" Elevation="2" Width="20%">
             <MudDrawerHeader>
-                <MudImage Src="@_iconSvg" />
+                <MudImage Src="@_iconSvg" Class="@(_isDarkMode ? "invert-colors" : "")" Height=40 Width=40/>
                 <MudText Typo="Typo.h5" Class="mt-1">
                     Conkers!
                 </MudText>
@@ -32,7 +32,35 @@
 
     private string? _iconSvg;
 
-    private MudTheme _theme = new();
+    private MudTheme _theme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#B79A52",
+            Secondary = "#F1C40F",
+            Background = "#FFF8E1",
+            AppbarBackground = "#E0C27B",
+            TextPrimary = "#333333",
+            TextSecondary = "#BDBDBD",
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = "#8C733A",
+            Secondary = "#FCD13D",
+            Background = "#333333",
+            AppbarBackground = "#595959",
+            TextPrimary = "#FFFFFF",
+            TextSecondary = "#CCCCCC",
+        },
+        Typography = new Typography()
+        {
+            Default = new Default()
+            {
+                FontFamily = new[] { "LeagueSpartan", "sans-serif" },
+            }
+
+        }
+    };
     private bool _isDarkMode;
 
     void DrawerToggle()
@@ -51,6 +79,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _iconSvg = await svgService.GetDefaultSvgAsync();
+        _iconSvg = await SvgService.GetHiSvgAsync();
     }
 }
