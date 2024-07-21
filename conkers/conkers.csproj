@@ -8,12 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\hi.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\default.svg" />
-    <EmbeddedResource Include="Resources\hi.svg" />
   </ItemGroup>
 
   <ItemGroup>

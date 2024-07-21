@@ -5,19 +5,19 @@
     <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
 
     <MudLayout>
-        <MudAppBar Elevation="1">
-            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudAppBar Elevation="2" Dense >
+            <MudIconButton
+                Icon="@(_drawerOpen ? Icons.Material.Filled.ArrowBack : Icons.Material.Filled.ArrowForward)"
+                Color="Color.Inherit"
+                Edge="Edge.Start"
+                OnClick="@((e) => DrawerToggle())"
+                />
             <MudSpacer />
-            <MudSwitch @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" ThumbIcon="@(_isDarkMode == true ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)" />
-            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+            <MudText>Conkers</MudText>
+            <MudSpacer />
+            <MudSwitch @bind-Value="_isDarkMode" Color="Color.Primary" T="bool" ThumbIcon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)" />
         </MudAppBar>
-        <MudDrawer @bind-Open="_drawerOpen" Variant="@DrawerVariant.Persistent" Elevation="2" Width="20%">
-            <MudDrawerHeader>
-                <MudImage Src="@_iconSvg" Class="@(_isDarkMode ? "invert-colors" : "")" Height=40 Width=40/>
-                <MudText Typo="Typo.h5" Class="mt-1">
-                    Conkers!
-                </MudText>
-            </MudDrawerHeader>
+        <MudDrawer @bind-Open="_drawerOpen" Variant="@DrawerVariant.Temporary" Elevation="24" Overlay="false" ClipMode="DrawerClipMode.Always">
             <Menu />
         </MudDrawer>
         <MudMainContent>
@@ -36,21 +36,13 @@
     {
         PaletteLight = new PaletteLight()
         {
-            Primary = "#B79A52",
-            Secondary = "#F1C40F",
-            Background = "#FFF8E1",
-            AppbarBackground = "#E0C27B",
-            TextPrimary = "#333333",
-            TextSecondary = "#BDBDBD",
+            // Primary = "#B79A52",
+            // Secondary = "#F1C40F",
         },
         PaletteDark = new PaletteDark()
         {
-            Primary = "#8C733A",
-            Secondary = "#FCD13D",
-            Background = "#333333",
-            AppbarBackground = "#595959",
-            TextPrimary = "#FFFFFF",
-            TextSecondary = "#CCCCCC",
+            // Primary = "#8C733A",
+            // Secondary = "#FCD13D",
         },
         Typography = new Typography()
         {
@@ -75,10 +67,5 @@
             _isDarkMode = await _mudThemeProvider.GetSystemPreference();
             StateHasChanged();
         }
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        _iconSvg = await SvgService.GetHiSvgAsync();
     }
 }

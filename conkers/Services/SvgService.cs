@@ -40,25 +40,6 @@ namespace conkers.Services
             }
         }
 
-        public static async Task<string> GetHiSvgAsync()
-        {
-            using (var stream = typeof(SvgService).Assembly.GetManifestResourceStream("conkers.Resources.hi.svg"))
-            {
-                if (stream != null)
-                {
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var result = await reader.ReadToEndAsync();
-                        return EncodeAsBase64(result);
-                    }
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-        }
-
         private static string EncodeAsBase64(string content)
         {
             var result = Convert.ToBase64String(Encoding.UTF8.GetBytes(content));
